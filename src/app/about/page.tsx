@@ -6,40 +6,40 @@ import Image from 'next/image'
 import pravinImage from '@/assets/images/pravin2.png'
 // import resumePdf from '@/assets/resume/pravin-sharma-resume.pdf' // Add this import
 import { useEffect, useState } from 'react'
-import { Github, Twitter, Linkedin, Mail, Code, Smartphone, Database, Cloud, Download, FileText } from 'lucide-react'
+import { GithubIcon, TwitterIcon, LinkedinIcon, MailIcon, CodeIcon, SmartphoneIcon, DatabaseIcon, CloudIcon, DownloadIcon } from 'lucide-react'
 
 const skills = [
   {
     name: 'Web Development',
-    icon: Code,
+    icon: CodeIcon,
     color: 'from-blue-400 to-blue-600',
     description: 'Building responsive and dynamic web applications'
   },
   {
     name: 'App Development',
-    icon: Smartphone,
+    icon: SmartphoneIcon,
     color: 'from-green-400 to-green-600',
     description: 'Creating cross-platform mobile experiences'
   },
   {
     name: 'Backend Development',
-    icon: Database,
+    icon: DatabaseIcon,
     color: 'from-yellow-400 to-yellow-600',
     description: 'Designing robust server-side solutions'
   },
   {
     name: 'Cloud Computing',
-    icon: Cloud,
+    icon: CloudIcon,
     color: 'from-purple-400 to-purple-600',
     description: 'Leveraging cloud infrastructure for scalability'
   },
 ]
 
 const socialLinks = [
-  { name: 'GitHub', icon: Github, url: 'https://github.com/known-27' },
-  { name: 'Twitter', icon: Twitter, url: 'https://x.com/PravinS______' },
-  { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/pravin-sharma-505282285/' },
-  { name: 'Email', icon: Mail, url: 'mailto:sharma272k3@gmail.com' },
+  { name: 'GitHub', icon: GithubIcon, url: 'https://github.com/known-27' },
+  { name: 'Twitter', icon: TwitterIcon, url: 'https://x.com/PravinS______' },
+  { name: 'LinkedIn', icon: LinkedinIcon, url: 'https://www.linkedin.com/in/pravin-sharma-505282285/' },
+  { name: 'Email', icon: MailIcon, url: 'mailto:sharma272k3@gmail.com' },
 ]
 
 interface ResumeSettings {
@@ -277,7 +277,7 @@ export default function About() {
             {/* Interactive button */}
             <button
               onClick={handleDownloadResume}
-              disabled={downloading || isLoading || error || !resumeSettings}
+              disabled={downloading || isLoading || !!error || !resumeSettings}
               className="relative px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 flex items-center space-x-3 min-w-[240px] justify-center group disabled:cursor-wait"
             >
               {/* Download icon */}
@@ -291,7 +291,7 @@ export default function About() {
                   ease: "linear"
                 }}
               >
-                <Download className={`w-6 h-6 text-white ${downloading ? 'opacity-80' : 'group-hover:scale-110 duration-300'}`} />
+                <DownloadIcon className={`w-6 h-6 text-white ${downloading ? 'opacity-80' : 'group-hover:scale-110 duration-300'}`} />
               </motion.div>
 
               {/* Button text */}
