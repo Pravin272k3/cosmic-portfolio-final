@@ -8,7 +8,11 @@ const ADMIN_PASSWORD = '27april2003';
 export const authenticate = (email: string, password: string): boolean => {
   if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
     // Set auth cookie with expiration of 1 day
-    Cookies.set('admin_authenticated', 'true', { expires: 1 });
+    Cookies.set('admin_authenticated', 'true', {
+      expires: 1,
+      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production'
+    });
     return true;
   }
   return false;

@@ -13,12 +13,13 @@ export async function POST(request: NextRequest) {
       // Create a response with authentication cookie
       const response = NextResponse.json({ success: true });
 
-      // Set the cookie
+      // Set the cookie with SameSite=Lax for cross-site compatibility
       response.cookies.set('admin_authenticated', 'true', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         maxAge: 60 * 60 * 24, // 1 day
         path: '/',
+        sameSite: 'lax'
       });
 
       return response;
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function DELETE(request: NextRequest) {
+export async function DELETE() {
   // Create a response for logout
   const response = NextResponse.json({ success: true });
 

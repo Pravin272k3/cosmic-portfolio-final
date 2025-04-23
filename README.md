@@ -33,4 +33,28 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Deployment Steps
+
+1. Create a Vercel account if you don't have one
+2. Connect your GitHub repository to Vercel
+3. Set up the following environment variables in the Vercel dashboard:
+   - `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`
+   - `NEXT_PUBLIC_EMAILJS_SERVICE_ID`
+   - `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`
+   - `NODE_ENV=production`
+4. Deploy your application
+
+### Admin Access
+
+After deployment, you can access the admin panel at:
+- URL: `https://your-vercel-domain.vercel.app/admin`
+- Email: `sharma272k3@gmail.com`
+- Password: `27april2003`
+
+### Important Notes
+
+- The admin functionality uses cookies for authentication, which are configured to work in a production environment
+- File uploads (resume, artwork) are stored in the `/public` directory, which is writable in Vercel's serverless environment
+- Data files (JSON) are stored in the `/src/data` directory, which is also writable in Vercel's serverless environment
+
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
