@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "First portfolio",
+    "description": "This is the first portfolio I made when I learned Web Development",
+    "url": "https://shinigami.free.nf/?i=1"
+  },
+  {
+    "id": 2,
+    "title": "Ape-x",
+    "description": "Ape-x is a browser extension that detects and blocks phishing websites, alerting users and offering an option to delete any personal data stored by such sites. Built with HTML, CSS, and JavaScript, it enhances web security and privacy.",
+    "url": "https://github.com/known-27/Ape-x"
+  },
+  {
+    "id": 3,
+    "title": "Ticket App",
+    "description": "A random project I made in the process of learning App Development with flutter",
+    "url": "https://github.com/Pravin272k3/ticket_app"
+  },
+  {
+    "id": 4,
+    "title": "Time Warp CMS",
+    "description": "Content management system that predicts and adapts to future trends automatically.",
+    "url": "https://hianimez.to/watch/fighting-spirit-34?ep=1032"
+  },
+  {
+    "id": 5,
+    "title": "Emotion-Driven UI",
+    "description": "User interface that morphs and responds to the user's emotional state in real-time.",
+    "url": "/projects/emotion-ui"
+  }
+]

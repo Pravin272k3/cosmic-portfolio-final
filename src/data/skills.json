@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Web Development",
+    "level": 65
+  },
+  {
+    "id": 2,
+    "name": "App Development",
+    "level": 30
+  },
+  {
+    "id": 3,
+    "name": "Backend Development",
+    "level": 40
+  },
+  {
+    "id": 4,
+    "name": "Java",
+    "level": 60
+  },
+  {
+    "id": 5,
+    "name": "DSA",
+    "level": 40
+  }
+]

@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "title": "Shinigami Ryuk",
+    "filename": "shinigami.jpg",
+    "category": "Charcoal",
+    "createdAt": "2023-01-15"
+  },
+  {
+    "id": 2,
+    "title": "Itachi",
+    "filename": "itachi.jpg",
+    "category": "Graphite",
+    "createdAt": "2023-02-20"
+  },
+  {
+    "id": 3,
+    "title": "Groot",
+    "filename": "groot.jpg",
+    "category": "Charcoal",
+    "createdAt": "2023-03-10"
+  },
+  {
+    "id": 4,
+    "title": "Captain America",
+    "filename": "captainAmerica.jpg",
+    "category": "Scribble",
+    "createdAt": "2023-04-05"
+  },
+  {
+    "id": 5,
+    "title": "Luffy",
+    "filename": "luffy.jpg",
+    "category": "Charcoal",
+    "createdAt": "2023-05-12"
+  },
+  {
+    "id": 6,
+    "title": "Wall-E",
+    "filename": "wallE.webp",
+    "category": "Painting",
+    "createdAt": "2023-06-18"
+  },
+  {
+    "id": 7,
+    "title": "Mizuhara Chizuru",
+    "filename": "mizuhara.jpg",
+    "category": "Graphite",
+    "createdAt": "2023-07-22"
+  },
+  {
+    "id": 8,
+    "title": "Shawn Edward",
+    "filename": "shawnEdward.jpg",
+    "category": "Graphite",
+    "createdAt": "2023-08-30"
+  },
+  {
+    "id": 9,
+    "title": "Zoro-Sanji",
+    "filename": "zoroSanji.jpg",
+    "category": "Charcoal",
+    "createdAt": "2023-09-15"
+  },
+  {
+    "id": 10,
+    "title": "Lisa",
+    "filename": "lisa.jpg",
+    "category": "Graphite",
+    "createdAt": "2023-10-05"
+  },
+  {
+    "id": 11,
+    "title": "Jisoo",
+    "filename": "jisso.jpg",
+    "category": "Graphite",
+    "createdAt": "2023-11-12"
+  },
+  {
+    "id": 12,
+    "title": "Jennie",
+    "filename": "jennie.jpg",
+    "category": "Charcoal",
+    "createdAt": "2023-12-20"
+  },
+  {
+    "id": 13,
+    "title": "Rose",
+    "filename": "rose.jpg",
+    "category": "Graphite",
+    "createdAt": "2024-01-08"
+  },
+  {
+    "id": 14,
+    "title": "Smoking",
+    "filename": "artwork-1745434018860.jpg",
+    "category": "Scribble",
+    "createdAt": "2025-04-23"
+  }
+]
