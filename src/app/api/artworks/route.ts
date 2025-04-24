@@ -8,7 +8,7 @@ import {
   updateArtwork,
   deleteArtwork,
   saveArtworkFile
-} from '@/utils/artworkUtils';
+} from '@/utils/artworkUtilsDB'; // Using the DB version
 import { ArtworkCategory } from '@/types/artwork';
 
 // GET all artworks or filtered by category
@@ -17,21 +17,26 @@ export async function GET(request: NextRequest) {
   const id = searchParams.get('id');
   const category = searchParams.get('category') as ArtworkCategory | null;
 
-  if (id) {
-    const artwork = getArtworkById(Number(id));
-    if (!artwork) {
-      return NextResponse.json({ error: 'Artwork not found' }, { status: 404 });
+  try {
+    if (id) {
+      const artwork = await getArtworkById(Number(id));
+      if (!artwork) {
+        return NextResponse.json({ error: 'Artwork not found' }, { status: 404 });
+      }
+      return NextResponse.json(artwork);
     }
-    return NextResponse.json(artwork);
-  }
 
-  if (category) {
-    const artworks = getArtworksByCategory(category);
+    if (category) {
+      const artworks = await getArtworksByCategory(category);
+      return NextResponse.json(artworks);
+    }
+
+    const artworks = await getAllArtworks();
     return NextResponse.json(artworks);
+  } catch (error) {
+    console.error('Error fetching artworks:', error);
+    return NextResponse.json({ error: 'Failed to fetch artworks' }, { status: 500 });
   }
-
-  const artworks = getAllArtworks();
-  return NextResponse.json(artworks);
 }
 
 // POST a new artwork
@@ -74,13 +79,14 @@ export async function POST(request: NextRequest) {
     // Convert file to buffer
     const buffer = Buffer.from(await file.arrayBuffer());
 
-    // Save the file
-    await saveArtworkFile(buffer, filename);
+    // Save the file to Cloudinary and get the URL
+    const imageUrl = await saveArtworkFile(buffer, filename);
 
     // Add artwork to database
-    const newArtwork = addArtwork({
+    const newArtwork = await addArtwork({
       title,
       filename,
+      imageUrl, // Store the Cloudinary URL
       category,
       createdAt: new Date().toISOString().split('T')[0] // Format: YYYY-MM-DD
     });
@@ -120,7 +126,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const artworkId = Number(id);
-    const existingArtwork = getArtworkById(artworkId);
+    const existingArtwork = await getArtworkById(artworkId);
 
     if (!existingArtwork) {
       return NextResponse.json(
@@ -130,6 +136,7 @@ export async function PUT(request: NextRequest) {
     }
 
     let filename = existingArtwork.filename;
+    let imageUrl = existingArtwork.imageUrl;
 
     // If a new file is provided, save it
     if (file) {
@@ -150,14 +157,15 @@ export async function PUT(request: NextRequest) {
       // Convert file to buffer
       const buffer = Buffer.from(await file.arrayBuffer());
 
-      // Save the file
-      await saveArtworkFile(buffer, filename);
+      // Save the file to Cloudinary and get the URL
+      imageUrl = await saveArtworkFile(buffer, filename);
     }
 
     // Update artwork in database
-    const updatedArtwork = updateArtwork(artworkId, {
+    const updatedArtwork = await updateArtwork(artworkId, {
       title,
       filename,
+      imageUrl,
       category
     });
 
@@ -198,14 +206,22 @@ export async function DELETE(request: NextRequest) {
     );
   }
 
-  const success = deleteArtwork(Number(id));
+  try {
+    const success = await deleteArtwork(Number(id));
 
-  if (!success) {
+    if (!success) {
+      return NextResponse.json(
+        { error: 'Artwork not found' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error deleting artwork:', error);
     return NextResponse.json(
-      { error: 'Artwork not found' },
-      { status: 404 }
+      { error: 'Failed to delete artwork' },
+      { status: 500 }
     );
   }
-
-  return NextResponse.json({ success: true });
 }
