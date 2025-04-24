@@ -46,6 +46,7 @@ interface ResumeSettings {
   filename: string;
   displayName: string;
   lastUpdated: string;
+  fileUrl?: string; // URL to the resume file in Cloudinary
 }
 
 export default function About() {
@@ -99,7 +100,9 @@ export default function About() {
         })
       }, 200)
 
-      const response = await fetch(`/resume/${resumeSettings.filename}`)
+      // Use the Cloudinary URL if available, otherwise fall back to local path
+      const fileUrl = resumeSettings.fileUrl || `/resume/${resumeSettings.filename}`
+      const response = await fetch(fileUrl)
       const blob = await response.blob()
 
       // Clear interval and set to 100%
