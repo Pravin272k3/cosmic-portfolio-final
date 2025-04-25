@@ -7,8 +7,23 @@
   NODE_VERSION = "18"
   NEXT_TELEMETRY_DISABLED = "1"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/skills*"
+  to = "/.netlify/functions/skills:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/projects*"
+  to = "/.netlify/functions/projects:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/auth*"
+  to = "/.netlify/functions/auth:splat"
+  status = 200
 
 [[redirects]]
   from = "/api/*"
