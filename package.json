@@ -9,10 +9,13 @@
     "prebuild": "node vercel-build.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "netlify-build": "node netlify-build.js && next build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@netlify/functions": "^2.6.0",
+    "@netlify/plugin-nextjs": "^4.41.3",
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.12",
     "@types/node": "^20",
